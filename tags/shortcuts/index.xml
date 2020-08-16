@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shortcuts on Home</title>
+    <link>https://MMilczynski.github.io/tags/shortcuts/</link>
+    <description>Recent content in shortcuts on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://MMilczynski.github.io/tags/shortcuts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Accelerating Windows 10 workflows with keyboard shortcuts</title>
+      <link>https://MMilczynski.github.io/posts/keyboard_shortcuts/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/posts/keyboard_shortcuts/</guid>
+      <description>Are you regularly trying to locate the yellow folder icon on the taskbar to open a new File Explorer window? Do you click on the Start button then scroll through a jungle of programs to finally arrive at the icon of the desired application you want to open? Are you right-clicking on a blank spot in the File Explorer, navigate with the mouse pointer over the New sub-menu and then click the Folder icon to create a new folder?</description>
+    </item>
+    
+  </channel>
+</rss>
