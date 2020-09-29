@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Matthias C Milczynski">
+    <meta name="description" content="Power BI tutorial part 2">
+    <meta name="keywords" content="blog,developer,personal">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Power BI tutorial part 2: Data inspection, cleaning and transformations"/>
+<meta name="twitter:description" content="Power BI tutorial part 2"/>
+
+    <meta property="og:title" content="Power BI tutorial part 2: Data inspection, cleaning and transformations" />
+<meta property="og:description" content="Power BI tutorial part 2" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://MMilczynski.github.io/posts/power_bi_tutorial_part_2/" />
+<meta property="article:published_time" content="2020-08-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-26T00:00:00+00:00" />
+
+
+    
+      <base href="https://MMilczynski.github.io/posts/power_bi_tutorial_part_2/">
+    
+    <title>
+  Power BI tutorial part 2: Data inspection, cleaning and transformations · Home
+</title>
+
+    
+      <link rel="canonical" href="https://MMilczynski.github.io/posts/power_bi_tutorial_part_2/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://MMilczynski.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://MMilczynski.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://MMilczynski.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://MMilczynski.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  
+  
+  <body class="colorscheme-light"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://MMilczynski.github.io/">
+      Home
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://MMilczynski.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://MMilczynski.github.io/music/">Music</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://MMilczynski.github.io/projects/">Projects</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Power BI tutorial part 2: Data inspection, cleaning and transformations</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-08-26T00:00:00Z'>
+                August 26, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              17-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://MMilczynski.github.io/tags/power-bi/">Power BI</a>
+      <span class="separator">•</span>
+    <a href="https://MMilczynski.github.io/tags/business-intelligence/">Business Intelligence</a>
+      <span class="separator">•</span>
+    <a href="https://MMilczynski.github.io/tags/tutorial/">Tutorial</a>
+      <span class="separator">•</span>
+    <a href="https://MMilczynski.github.io/tags/etl/">ETL</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Welcome to part 2 of the Power BI tutorial! Now that you have installed and configured Power BI as discussed in <a href="https://MMilczynski.github.io/posts/power_bi_tutorial_part_1/" >part 1</a> you&rsquo;re ready for getting your hands dirty with data shaping workflows. In this part we will load, clean up and transform the data to have a good baseline for part 3.</p>
+<h1 id="dataset">Dataset</h1>
+<h2 id="download-the-data">Download the data</h2>
+<p>The first thing you wanna do is to get the dataset we will be working with from here <a href="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/dataset/PowerBIdata.zip?raw=true"  target="_blank" >dataset</a> (download should start immediately). Extract the zip-file to a location of your choice. You should see two folders <code>USSAles</code> and <code>InternationalSales</code>.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>The dataset we&rsquo;ll be using represents real anonymized data using fictive company names and is provided by <strong>ObviEnce LLC</strong>. Visit their site <a href="http://www.obvience.com">www.obvience.com</a> to learn about their services. Please use the following attribution to ObviEnce, LLC for any usage of this data: <strong>This data is property of ObviEnce LLC and has been shared for the purpose of demonstrating PowerBI functionality with industry sample data.</strong></p>
+<h2 id="examining-the-raw-data">Examining the raw data</h2>
+<p>The data we&rsquo;ll be working with is located in folders <code>USSales</code> and <code>InternationalSales</code> and is an mix of Microsoft Excel worksheets and comma separated value (CSV) files. Let&rsquo;s examine some of them in Excel. Pro tip: When working with delimiter-separated data it is sometimes recommended to open Excel first and then load the data using <strong>Data</strong> -&gt; <strong>From Text/CSV</strong>.</p>
+<p>First, let&rsquo;s have a look at <code>sales.csv</code> in the <code>USSales</code> folder. Don&rsquo;t worry about the <code>File not loaded completely</code> message. Expand the width of the columns in Excel if necessary.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/sales_01.png?raw=true"
+         alt="Purchase records with revenue for various products (sales.csv)." width="55%"/> <figcaption>
+            <p>Purchase records with revenue for various products (sales.csv).</p>
+        </figcaption>
+</figure>
+
+<p>This file contains purchase records listed by date, quantity, resulting revenue etc. for certain products. The products are represented by a <code>ProductID</code>. The reason for using a <code>ProductID</code> instead of e.g. the actual product name is related to concepts used in relational databases where different tables are linked through so called unique identifiers. The idea is that we will have another table where each product name will be uniquely linked to its <code>ProductID</code>. We will see other <code>...ID</code> columns in other data files which have the exact same function.</p>
+<p>Next, in the <code>bi_dimensions.xlsx</code> (also located in the <code>USSales</code> folder) we can find 3 spreadsheets: <code>product</code>, <code>manufacturer</code>, and <code>geo</code>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/product_01.png?raw=true"
+         alt="Listing of all products (bi_dimensions.xlsx)." width="70%"/> <figcaption>
+            <p>Listing of all products (bi_dimensions.xlsx).</p>
+        </figcaption>
+</figure>
+
+<p>In product, all products are listed by <code>ProductID</code>, <code>Product</code> (i.e. product name) plus other data such as <code>ManufacturerID</code> and <code>Price</code>. Each <code>ProductID</code> and associated <code>Product</code> appear only once! This will be important when linking tables later on in part 3 thereby creating so called <code>1-to-many</code> relationships. We also see that entries in the <code>Category</code> column only appear somehow sporadically. We&rsquo;ll take care of that later. Now that we talked a little bit about how IDs are linked to names you may already have certain expectations on what the manufacturer spreadsheet contains and voila! &hellip; <code>ManufacturerID</code> and <code>Manufacturer</code>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/product_manu_01.png?raw=true"
+         alt="Manufacturer spreadsheet snippet (bi_dimensions.xlsx). Data is represented row-wise and not column-wise as in the previous tables." width="100%"/> <figcaption>
+            <p>Manufacturer spreadsheet snippet (bi_dimensions.xlsx). Data is represented row-wise and not column-wise as in the previous tables.</p>
+        </figcaption>
+</figure>
+
+<p>However, the contents look somewhat odd. It seems like the table is flipped and the data is being presented row-wise rather than column-wise. Again, we will fix that later and create unified table formats.</p>
+<p>Last but not least, we have the geo spreadsheet that lists zip-codes, cities, states etc. per country. The format looks more familiar i.e. data is represented column-wise. However, we see that there is some extra info in the first rows which we may want to get rid of later.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/product_geo_02.png?raw=true"
+         alt="Geo spreadsheet snippet (bi_dimensions.xlsx)." width="100%"/> <figcaption>
+            <p>Geo spreadsheet snippet (bi_dimensions.xlsx).</p>
+        </figcaption>
+</figure>
+
+<p>The files in the <code>InternationalSales</code> folder contain tables with the same format <code>sales.csv</code> except for an additional <code>Country</code> column.</p>
+<h1 id="loading-us-sales-data">Loading US-sales data</h1>
+<p>We will load our first data into Power BI starting with <code>sales.csv</code>. In the ribbon of the main Power BI window click on <strong>Get Data</strong> to expand possible sources of data that are supported by Power BI and select <strong>Text/CSV</strong>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/get_data_01.png?raw=true"/> 
+</figure>
+
+<p>Navigate to the location where you have saved <code>sales.csv</code>. Power BI will show a preview with a suggested format of the loaded file.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/data_preview.png?raw=true"/> 
+</figure>
+
+<p>It looks like Power BI intends to parse the data in the way we want. But, instead of hitting <strong>Load</strong> we want to go to <strong>Transform Data</strong>. This will open the <strong>Query Editor</strong> in another Power BI window. As already mentioned in <a href="https://MMilczynski.github.io/posts/power_bi_tutorial_part_1/" >part 1</a>, the <strong>Query Editor</strong> will be the go-to place for us for applying various transformations to the data for the purpose of shaping the data to our liking and making it suitable for our final dashboard. For example, one common transformation will be to apply the correct data type to a column e.g. to make sure that a column&rsquo;s data type is numerical so we can perform calculations.</p>
+<p>Once the <strong>Query Editor</strong> opens you&rsquo;ll see <code>sales</code> appearing in the <strong>Queries</strong> listing on the left-hand side.</p>
+<h2 id="column-profiling">Column profiling</h2>
+<p>Now that our sales table is loaded in the <strong>Query Editor</strong> let&rsquo;s engage one useful feature of Power BI that will provide us with additional metadata and even some descriptive statistics on each column. From the ribbon select <strong>View</strong> and check the <strong>Column distribution</strong> and <strong>Column profile</strong> boxes. Each column is now enhanced by a bar graph showing the histogram of the column data below the column header. If you select the column header a new panel in the bottom of the screen will appear showing some descriptive statistics (max, min, mean etc.) of the column data.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/column_profiling_01.png?raw=true"/> 
+</figure>
+
+<p>In the bottom-left corner you can select whether the profiling data is based on the first 1000 rows or the entire dataset. To me personally it makes more sense to extract the profile based on the entire dataset especially if your data contains millions of rows so let&rsquo;s make this selection. Beware that it may take a while for the profile to be fully calculated if you have a relatively large dataset. Let&rsquo;s briefly focus on the <strong>Count</strong>, <strong>Distinct</strong> and <strong>Unique</strong> statistics of the column profile. <strong>Count</strong> gives the total number of entries (or rows) for the selected column. <strong>Distinct</strong> shows how many distinct values the column contains. So if e.g. our table would only contain the <code>ProductID</code> entries 1076 and 1077 and the value 1076 would appear 10 times and the value 1077 would appear 5 times we would get a <strong>Count</strong> of 15 but the <strong>Distinct</strong> measure would indicate 2. Finally, <strong>Unique</strong> indicates how many elements only appear once in the column. With those 3 values we will soon be able to validate a dataset.</p>
+<h2 id="first-data-transformation-data-type-change">First data transformation: Data type change</h2>
+<p>We will carry out our first data transformation now by changing the data type of zip-codes in the <code>sales</code> table from <strong>Whole Number</strong> to <strong>Text</strong>. Click on the <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/whole_number_sign_01.png?raw=true" alt="WholeNumberType"> sign in the column header of the <code>Zip</code> column and select <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/text_sign_01.png?raw=true" alt="TextType"> (which represents the <strong>Text</strong> data type). This change makes sense for several reasons. Although zip-codes are represented as a sequence of numbers they are not intended for numerical operations such as addition. Also, with the <strong>Whole Number</strong> type leading zeros are discarded which would result in incorrect or non-existing zip-codes.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="loading-data-on-products-manufacturers-and-location">Loading data on products, manufacturers, and location</h1>
+<p>Next, we will load the <code>bi_dimensions.xlsx</code> file. We will do that from the <strong>Query Editor</strong> using <strong>Home</strong> -&gt; <strong>New Source</strong> -&gt; <strong>Excel</strong>. Navigate to the <code>bi_dimensions.xlsx</code> file and hit <strong>Open</strong>. You&rsquo;ll see the <strong>Navigator</strong> window showing a table named <code>Product_Table</code> and the already discussed <code>product</code>, <code>manufacturer</code>, and <code>geo</code> spreadsheets.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/navigator_02.png?raw=true"/> 
+</figure>
+
+<p>You may be wondering where <code>Product_Table</code> is coming from but if you carefully review <code>bi_dimensions.xlsx</code> you&rsquo;ll see that in the <code>product</code> spreadsheet the product listing was formatted as a Table. To confirm this, go back to the <code>bi_dimensions.xlxs</code> in Excel, select the <code>ProductID</code> column header. Select the <strong>Table Design</strong> menu item. You&rsquo;ll see that <strong>Table Name</strong> was indeed set to <code>Product_Table</code>. So there is no magic happening here just straight forward parsing.</p>
+<p>Going back to Power BI and the Navigator window, if you click on either of the tables you&rsquo;ll see a parsing suggestion on the right-hand side. We see that the <code>Product_Table</code> was parsed according to our expectations. Similar to the <code>sales</code> table, the table column header names were correctly propagated. So let&rsquo;s check its checkbox in the Navigator window. The <code>geo</code> spreadsheet parsing indicates that there are some unnecessary leading rows in the data which we will take care of soon. Select the <code>geo</code> checkbox. As we have seen before, the <code>manufacturer</code> spreadsheet will also need some cleaning operations since as we already have seen its entries are somewhat transposed. Select the <code>manufacturer</code> checkbox. Your <strong>Navigator</strong> window should look as above.</p>
+<p>Hit OK in the <strong>Navigator</strong> window. The 3 selected tables should now appear as queries in the <strong>Query Editor</strong>.</p>
+<h1 id="loading-international-sales-data">Loading international sales data</h1>
+<p>Last but not least, we will load international sales data. In the <strong>Query Editor</strong> select <strong>Home</strong> -&gt; <strong>New Source</strong> -&gt; <strong>Folder</strong>, navigate to the folder <code>InternationalSales</code> containing those csv files:</p>
+<ul>
+<li>Australia.csv</li>
+<li>Canada.csv</li>
+<li>Germany.csv</li>
+<li>Japan.csv</li>
+<li>Mexico.csv</li>
+<li>Nigeria.csv</li>
+</ul>
+<p>and hit <strong>OK</strong>. You&rsquo;ll see a pop-up window listing those files with some additional meta-data. Click on <strong>Combine &amp; Transform Data</strong>. This will open the <strong>Combine Files</strong> dialog allowing us to specify transformation steps for those files. The suggested default settings with <strong>Comma</strong> selected as the <strong>Delimiter</strong> work for us so let&rsquo;s go ahead and click on <strong>OK</strong>. Now, <code>InternationalSales</code> appears as an additional query in the <strong>Query Editor</strong>. The <strong>Queries</strong> listing should look as follows:</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/queries_01.png?raw=true"/> 
+</figure>
+
+<p>Feel free to collapse the <code>Transform File from InternationalSales</code> query, we&rsquo;ll not use it.</p>
+<p>Select the <code>InternationalSales</code> query. A quick examination reveals that the <code>Zip</code> column has data-type <strong>Whole Number</strong> similar to what we have seen before. Let&rsquo;s change it to <strong>Text</strong> which will fix missing leading zeros. You may see a pop-up dialog asking you whether you want to replace the current step or add a new one. Select <strong>Replace current</strong> but in general you&rsquo;ll always need to decide case by case choice make most sense here. Next, we see that the query contains the <code>Source.Name</code> column indicating the filename which in turn contains the country name. Since we already have a country column we can remove the <code>Source.Name</code> column. Simply right-click on the column header and select <code>Remove</code> column:</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/remove_column.png?raw=true"/> 
+</figure>
+
+<h1 id="more-query-transformations">More query transformations</h1>
+<p>Now that we have all of our data loaded into the <strong>Query Editor</strong> let&rsquo;s prepare the data to be suitable for visualization and interactive analysis. We will apply various transformations to columns and will be able to manage the transformations through the very useful <strong>APPLIED STEPS</strong> feature of the <strong>Query Editor</strong>.</p>
+<h2 id="applied-steps">Applied steps</h2>
+<p>The <strong>Query Editor</strong> of Power BI keeps track of your actions in the <strong>APPLIED STEPS</strong> panel on the right-hand side. This section is quite powerful since you can:</p>
+<ul>
+<li>Click on one particular step in the list and check the state of your table before and after a sequence of steps</li>
+<li>Rename an applied step (don&rsquo;t underestimate this possibility!)</li>
+<li>Modify a step by clicking on the settings <img src="https://MMilczynski.github.io/images/app_step_settings_01.png" alt="AppStepSettings"> icon next to the step</li>
+<li>Remove a step</li>
+<li>Move a step up/down in the sequence of applied steps</li>
+</ul>
+<h2 id="renaming-the-queries">Renaming the queries</h2>
+<p>We want to give our queries adequate names. The current query names are somewhat all over the place, some are in lowercase, some are in CamelCase, some contain underscores to separate words. We should fix that by making the names more consistent and meaningful. Proper naming is crucial and should not be underestimated e.g. if you take a break from your Power BI session and come back to it a week later or if you intend to share your findings with others which is one of the main purposes of Power BI. To rename a query, select the query from the <strong>Queries</strong> listing and either right-click the query and select <strong>Rename</strong> or with the query selected press 
+<kbd>F2</kbd> and type in the new name. Rename the queries as follows:</p>
+<ul>
+<li>sales -&gt; Sales</li>
+<li>geo -&gt; Geography</li>
+<li>manufacturer -&gt; Manufacturer</li>
+<li>Product_Table -&gt; Product</li>
+<li>InternationalSales -&gt; International Sales</li>
+</ul>
+<p>You <strong>Queries</strong> listing now should look as follows:</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/queries_renamed.png?raw=true"/> 
+</figure>
+
+<h2 id="validation-of-product-query">Validation of Product query</h2>
+<p>Select the <code>Product</code> query, click on the <code>ProductID</code> column header, and enable <strong>Column profile</strong> from the <strong>View</strong> menu. Make sure the <strong>Column profiling based on entire dataset</strong> setting is active. What does the <code>Product</code> query represent? It specifies name, category, manufacturer and price for each product and each product is represented by a unique <code>ProductID</code>. Obviously, the table should specify all above mentioned product parameters only once per product. Knowing that, what do we in turn expect for the  <code>Count</code>, <code>Distinct</code> and <code>Unique</code> statistics of the <code>ProductID</code> column? We expect those three values values being the same! This is indeed true since all values amount to 2412.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/productid_stats_01.png?raw=true"/> 
+</figure>
+
+<p>Strictly speaking, we would expect those values to also be equal for the <code>Product</code> column. However, this column only contains 2172 distinct values meaning that we have duplicates in that column!</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/product_stats_02.png?raw=true"/> 
+</figure>
+
+<p>The item <code>Fama UE01|Extreme</code> for example appears multiple times once in row 280 and one more time in row 380. For the time being we will not worry too much about this. Those two items differ in price so there is some difference between them but the level of detail that would explain this difference is not accessible to us given the data we have. This is fine since we still have the <code>ProductID</code> column which uniquely identifies each product.</p>
+<h2 id="applying-fill-feature">Applying Fill feature</h2>
+<p>Let&rsquo;s have a look at the <code>Category</code> column of the <code>Product</code> query. As mentioned before, entries in this column occur in a somewhat irregular fashion. The rule is: whenever there is a change in the segment-name that appears after the pipe in the <code>Product</code> column (i.e. All Season, Productivity, Select etc.) the category is specified followed by <code>null</code> entries for the remainder of that segment. The specified category name applies to the remainder of that particular segment.</p>
+<p>We want to fill up null entries with the preceding segment-name. Before we carry out this transformation we need to make sure that our <code>Product</code> query is sorted by <code>ProductID</code>! Click on the down-arrow in the right corner of the <code>ProductId</code> column and select <strong>Sort Ascending</strong> and hit <strong>OK</strong>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/sort_productid_01.png?raw=true"/> 
+</figure>
+
+<p>Next, select the <code>Category</code> column. In the ribbon select the <strong>Transform</strong> menu item and in the <strong>Any column</strong> section click on <strong>Fill</strong> and select <strong>Fill down</strong>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/fill_category.png?raw=true"/> 
+</figure>
+
+<p>The <code>null</code> entries in the <code>Category</code> column have now been replaced with the preceding category label which is exactly what we wanted.</p>
+<h2 id="split-column-feature">Split Column feature</h2>
+<p>As we have seen before, the <code>Product</code> column of the <code>Product</code> query contains product-name and segment-name separated by a pipe. It makes sense to extract the segment part into a new column. We can do this using the <strong>Split Column</strong> feature which you can find in the <strong>Home</strong> menu item in the <strong>Transform</strong> section. Click on <strong>Split Column</strong> and select <strong>By Delimiter</strong>. In the pop-up dialog make sure <strong>Custom</strong> is selected from the drop-down list and enter the pipe sign <code>|</code> as the delimiter (remove the hyphen that was added by Power BI):</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/split_feature.png?raw=true"/> 
+</figure>
+
+<p>Click <strong>OK</strong>. Power BI has automatically renamed the existing <code>Product</code> column to <code>Product.1</code> and the newly created column with the segment-name is called <code>Product.2</code>. Rename <code>Product.1</code> to <code>Product</code> and  <code>Product.2</code> to <code>Segment</code>.</p>
+<h2 id="column-from-examples-feature">Column From Examples feature</h2>
+<p>You may end up in situations where the rule for extracting column contents into new columns is not as clear as in the previous delimiter example. In those cases, the <strong>Column From Examples</strong> feature may be helpful. The idea is to tell Power BI what part of a column entry you want to extract and Power BI will create the rule for you. Let&rsquo;s see that feature in action for the <code>Price</code> column (we&rsquo;re still looking at the <code>Product</code> query). Select the <code>Price</code> column. From the <strong>Add Column</strong> menu item select <strong>Column From Examples</strong>, and then <strong>From Selection</strong>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/column_from_examples.png?raw=true"/> 
+</figure>
+
+<p>You&rsquo;ll see a new column being created on the right-hand side named <code>Column1</code>. In the first row of this new column type in the numerical value from the corresponding row from the <code>Price</code> column. In the example above I typed in the value <code>412.13</code>:</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/column_from_ex_editing.png?raw=true"/> 
+</figure>
+
+<p>Hit 
+<kbd>Enter</kbd>. Power BI renamed <code>Column1</code> to <code>Text After Delimiter</code>. This is in fact the name of the transformation that Power BI applied based on the example we have provided. Hit 
+<kbd>Ctrl</kbd> <code>+</code> 
+<kbd>Enter</kbd> to finalize this operation. You can apply that transformation manually using <strong>Add Column</strong> -&gt; <strong>Extract</strong> -&gt; <strong>Text After Delimiter</strong> with <code>space</code> used as the delimiter. The transformation also was appended to our list of applied steps.</p>
+<h2 id="apply-remaining-transformations-to-product-query">Apply remaining transformations to Product query</h2>
+<p>Now that you know some common transformations, carry out the following steps:</p>
+<ul>
+<li>Rename the <code>Text After Delimiter</code> to <code>MSRP</code> (a.k.a. Manufacturer Suggested Retail Price)</li>
+<li>Change the data-type of the <code>MSRP</code> column to <strong>Fixed Decimal</strong></li>
+<li>Extract the currency portion from the <code>Price</code> column into a new column called <code>Currency</code> with data-type <strong>Text</strong></li>
+<li>Remove the <code>Price</code> column</li>
+</ul>
+<p>The <code>Product</code> query should look like this now:</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/Product_query_transformed.png?raw=true"/> 
+</figure>
+
+<h2 id="cleaning-up-the-geography-query">Cleaning up the Geography query</h2>
+<p>Select the <code>Geography</code> query. As mentioned before, the original data contains some not very useful meta-data in trailing rows which was propagated to the current query. Let&rsquo;s get rid of those rows and also make sure that the column names <code>Zip</code>, <code>City</code> etc. will be correctly applied to the query. From the <strong>Home</strong> menu click on <strong>Remove Rows</strong> in the <strong>Reduce Rows</strong> section. Select <strong>Remove Top Rows</strong>. In the pop-up dialog enter 2 for the <strong>Number of Rows</strong> parameter and hit <strong>OK</strong>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/Remove_top_rows_02.png?raw=true"/> 
+</figure>
+
+<p>Next, from the <strong>Home</strong> menu item click on <strong>Use First Rows as Headers</strong> in the <strong>Transform</strong> section. Now our column headers have proper names. In a final step, make sure that all columns have <strong>Text</strong> as data-type i.e. change the type if necessary. This also applies to columns indicating <strong>ABC 123</strong> as data-type which is the data-type <strong>Any</strong> (propagated from Excel).</p>
+<h2 id="applying-the-transpose-feature-to-the-manufacturer-query">Applying the Transpose feature to the Manufacturer query</h2>
+<p>Select the <code>Manufacturer</code> query. We already have seen in the beginning of this tutorial that the <code>Manufacturer</code> data is somewhat flipped. So what we want to do first is to turn rows into columns. From the <strong>Transform</strong> menu item select <strong>Transpose</strong> from the <strong>Table</strong> section. Now, similar to the <code>Geography</code> query, the column names are contained in the first row so let&rsquo;s fix that using the <strong>Use First Rows as Headers</strong> operation. The last step we want to perform on the <code>Manufacturer</code> query is to remove all columns beyond the <code>Logo</code> column. Use 
+<kbd>Ctrl</kbd> + <code>Click</code> to select the 3 rightmost columns to speed this up.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/manu_query.png?raw=true"/> 
+</figure>
+
+<h2 id="combining-sales-and-international--queries">Combining Sales and International  queries</h2>
+<p>The last transformation we want to perform in the query editor is to combine the <code>Sales</code> and <code>International Sales</code> queries. This makes sense since later on we will want to analyze the data across countries. What we will do is to append the <code>International Sales</code> query to the <code>Sales</code> query. We will then perform a number of transformations on the <code>Sales</code> query.</p>
+<p>Select the <code>Sales</code> query and from the <strong>Home</strong> menu item select <strong>Append Queries</strong> from the <strong>Combine</strong> section. A pop-up dialog will show up allowing you to select the tables to be appended. We leave the <strong>Two Tables</strong> setting selected and will select <code>International Sales</code> from the <strong>Table to Append</strong> drop-down list. Hit <strong>OK</strong>.</p>
+<figure>
+    <img src="https://github.com/MMilczynski/BlogRawData/blob/master/PowerBITutorial/images/append_queries.png?raw=true"/> 
+</figure>
+
+<p>A new <code>Country</code> column in the <code>Sales</code> table with <code>null</code> values for US products was created. This makes sense since <code>International Sales</code> had an extra <code>Country</code> column.</p>
+<p>Now, we want to replace the <code>null</code> values with <code>USA</code>. But before we do that we need to make sure that <code>null</code> values only appear for US products. We can verify this by counting the number of rows in the <code>Sales</code> query before the merge with <code>International Sales</code> and check whether this number is equal to the number of null counts in the merged query. With the <code>Sales</code> query selected, select <strong>Changed Type</strong> from the <strong>APPLIED STEPS</strong> listing (i.e. one step before the <strong>Appended Query</strong> step) and enable <strong>Column profile</strong> from the <strong>View</strong> menu item and make sure that the entire dataset is used for profiling. After a couple of moments we count 4198753 rows in the <code>Sales</code> table. Now select the <strong>Appended Query</strong> step and select the <code>Country</code> column. Again, after a few moments of waiting for the calculation we see 4198753 <strong>Empty</strong> rows in the column statistics (<code>null</code> represents an empty entry). That&rsquo;s good news! So we can go ahead and apply the <strong>Replace Values</strong> feature to the <code>Country</code> column. Select the <code>Country</code> column, from the <strong>Transform</strong> menu item select <strong>Replace Values</strong> from the <strong>Any column</strong> section. In the pop-up dialog enter <code>null</code> in the <strong>Value To Find</strong> field and <code>USA</code> in the <strong>Replace With</strong> field and hit <strong>OK</strong>.</p>
+<p>Let&rsquo;s make sure that all columns in <code>Sales</code> have the correct data-type. Therefore, confirm the following data-types (and change if necessary):</p>
+<ul>
+<li><code>ProductID</code> -&gt; <strong>Whole Number</strong></li>
+<li><code>Date</code> -&gt; <strong>Date</strong></li>
+<li><code>Zip</code> -&gt; <strong>Text</strong></li>
+<li><code>Units</code> -&gt; <strong>Whole Number</strong></li>
+<li><code>Revenue</code> -&gt; <strong>Fixed Decimal</strong></li>
+<li><code>Country</code> -&gt; <strong>Text</strong></li>
+</ul>
+<p>Last but not least, we want to exclude the <code>International Sales</code> table from being part of reloading the entire dataset since we don&rsquo;t need this table anymore. Right-click on the <code>International Sales</code> table and make sure that <strong>Enable load</strong> is unchecked. The font of the <code>International Sales</code> table now should change to italic indicating that the table is not part of the dataset anymore.</p>
+<p>Alright! We are now in good shape as far as data preparation is concerned. In the part 3 of this tutorial we will create interactive visualization in the frame of a powerful dashboard.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+      
+        ©
+        
+        2020
+         Matthias C Milczynski 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+
+  </body>
+
+</html>

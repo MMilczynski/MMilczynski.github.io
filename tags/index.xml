@@ -6,13 +6,49 @@
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://MMilczynski.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>basics</title>
+      <title>Business Intelligence</title>
+      <link>https://MMilczynski.github.io/tags/business-intelligence/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/tags/business-intelligence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ETL</title>
+      <link>https://MMilczynski.github.io/tags/etl/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/tags/etl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Power BI</title>
+      <link>https://MMilczynski.github.io/tags/power-bi/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/tags/power-bi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://MMilczynski.github.io/tags/tutorial/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Basics</title>
       <link>https://MMilczynski.github.io/tags/basics/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
@@ -21,7 +57,7 @@
     </item>
     
     <item>
-      <title>keyboard</title>
+      <title>Keyboard</title>
       <link>https://MMilczynski.github.io/tags/keyboard/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
@@ -30,7 +66,7 @@
     </item>
     
     <item>
-      <title>shortcuts</title>
+      <title>Shortcuts</title>
       <link>https://MMilczynski.github.io/tags/shortcuts/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       

@@ -6,10 +6,29 @@
     <description>Recent content on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://MMilczynski.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Power BI tutorial part 1: Installation and setup</title>
+      <link>https://MMilczynski.github.io/posts/power_bi_tutorial_part_1/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/posts/power_bi_tutorial_part_1/</guid>
+      <description>Power BI is Microsoft&amp;rsquo;s solution for creating powerful business intelligence reports. It provides tools for creating Extract, Transform and Load (ETL) pipelines as well as impressive dashboards containing visualizations, animations and user-interaction support. The steepness of Power BI&amp;rsquo;s learning curve depends a bit on the user&amp;rsquo;s background but with some practice one can manage to create a solid report within one day. To help newcomers to Power BI with getting started and understanding some fundamental concepts I created a tutorial in which we will create the Power BI dashboard below.</description>
+    </item>
+    
+    <item>
+      <title>Power BI tutorial part 2: Data inspection, cleaning and transformations</title>
+      <link>https://MMilczynski.github.io/posts/power_bi_tutorial_part_2/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://MMilczynski.github.io/posts/power_bi_tutorial_part_2/</guid>
+      <description>Welcome to part 2 of the Power BI tutorial! Now that you have installed and configured Power BI as discussed in part 1 you&amp;rsquo;re ready for getting your hands dirty with data shaping workflows. In this part we will load, clean up and transform the data to have a good baseline for part 3.
+Dataset Download the data The first thing you wanna do is to get the dataset we will be working with from here dataset (download should start immediately).</description>
+    </item>
     
     <item>
       <title>Accelerating Windows 10 workflows with keyboard shortcuts</title>
